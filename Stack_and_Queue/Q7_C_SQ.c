@@ -109,18 +109,18 @@ int balanced(char *expression)
 	int i = 0;
 	// stack push
 	char c;
-while (expression[i] != '\0') {
+while (expression[i] != '\0') { //인덱싱식으로 포인터를 배열로 접근
     char c = expression[i];  // 실제 문자 저장
-    if (c == '{' ||c == '[' ||c == '(') {
+    if (c == '{' ||c == '[' ||c == '(') { // 문자열이 여는 괄호면 push , 닫히는 괄호면 pop을 할꺼임
         push(&s, c);
     } else {
         if (isEmptyStack(&s)) {
             return 1;
         }
         int temp = pop(&s);
-        if ((c == '}' && temp != '{') ||
-            (c == ']' && temp != '[') ||
-            (c == ')' && temp != '(')) {
+        if ((c == '}' && temp != '{') ||	// 반복하며 닫히는 괄호면, 현재 expresstion 문자 저장중인 c와  
+            (c == ']' && temp != '[') ||	// 매치시켜서 stack에서 pop한 값과 같은 종류 괄호가 아니면,
+            (c == ')' && temp != '(')) {	// not match를 위해 값=1 리턴
             return 1;
         }
     }
