@@ -122,6 +122,25 @@ void createStackFromLinkedList(LinkedList *ll, Stack *s)
 void removeEvenValues(Stack *s)
 {
 	/* add your code here */
+	if ( isEmptyStack(s) == 1){
+		return;
+	}
+	Stack tempS;
+	LinkedList lst;
+	lst.head =NULL;
+	lst.size = 0;
+	createStackFromLinkedList(&lst, &tempS);
+	
+	while(isEmptyStack(s) == 0){
+
+		int temp_data = pop(s);
+		if (temp_data % 2 == 1){
+			push(&tempS,temp_data );
+		}
+	}
+	while(isEmptyStack(&tempS) == 0){
+		push(s,pop(&tempS));
+	}
 	
 
 }

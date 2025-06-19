@@ -113,6 +113,18 @@ int main()
 void reverse(Queue *q)
 {
 /* add your code here */
+	Stack s_temp;
+	s_temp.ll.head =NULL;
+	s_temp.ll.tail =NULL;
+	s_temp.ll.size =0;
+
+	while(q->ll.head != NULL){
+		push(&s_temp,dequeue(q));
+	}
+	q->ll.head = s_temp.ll.head;
+	q->ll.tail = s_temp.ll.tail;
+	q->ll.size = s_temp.ll.size;
+	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -203,7 +215,7 @@ int insertNode(LinkedList *ll, int index, int value){
 
 	ListNode *pre, *cur;
 
-	if (ll == NULL || index < 0 || index > ll->size + 1)
+	if (ll == NULL || index < 0 || index > ll->size + 1) // 널이거나 인덱스(파라메터)가 0보다 작거나 + 연결리스트 사이즈 +1 보다 크면
 		return -1;
 
 	// If empty list or inserting first node, need to update head pointer
