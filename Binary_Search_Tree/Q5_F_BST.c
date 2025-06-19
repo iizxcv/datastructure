@@ -89,10 +89,36 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 
-void postOrderIterativeS2(BSTNode *root)
-{
-	 /* add your code here */
+void postOrderIterativeS2(BSTNode *root) {
+    if (root == NULL)
+        return;
+
+    Stack stack1, stack2;
+    stack1.top = NULL;
+    stack2.top = NULL;
+
+    // 1. 루트를 stack1에 push
+    push(&stack1, root);
+
+    // 2. stack1에서 pop하고 stack2에 push
+    //    pop한 노드의 왼쪽과 오른쪽 자식은 stack1에 push
+    while (!isEmpty(&stack1)) {
+        BSTNode *node = pop(&stack1);
+        push(&stack2, node);
+
+        if (node->left)
+            push(&stack1, node->left);
+        if (node->right)
+            push(&stack1, node->right);
+    }
+
+    // 3. stack2를 pop하면서 출력 (이게 post-order임)
+    while (!isEmpty(&stack2)) {
+        BSTNode *node = pop(&stack2);
+        printf("%d ", node->item);
+    }
 }
+
 
 /* Given a binary search tree and a key, this function
    deletes the key and returns the new root. Make recursive function. */

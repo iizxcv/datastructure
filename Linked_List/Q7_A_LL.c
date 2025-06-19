@@ -93,9 +93,8 @@ void RecursiveReverse(ListNode **ptrHead)
 	ListNode *next = cur->next;
 	RecursiveReverse(&(*ptrHead)->next);
 	// RecursiveReverse(&next);
-	(*ptrHead) = (*ptrHead)->next;
+	next= (*ptrHead)->next;
 	next->next = cur;
-
 	cur->next = NULL;
 }
 

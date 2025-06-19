@@ -109,7 +109,7 @@ int maxHeight(BTNode *node)
     /* add your code here */
     left_depth = maxHeight(node->left) +1 ;     // 재귀함수 호출 리턴 후 받은 값에 +1 추가 depth 판별
     right_depth = maxHeight(node->right) +1;    // 재귀함수 호출 리턴 후 받은 값에 +1 추가 depth 판별
-
+    
     if (left_depth > right_depth){              //아래부터 파이썬 max함수 같은 역할
         return left_depth;
     }
