@@ -11,6 +11,7 @@ Purpose: Implementing the required functions for Question 6 */
 
 #define MIN_INT -1000
 
+
 //////////////////////////////////////////////////////////////////////////////////
 
 typedef struct _listnode
@@ -112,6 +113,9 @@ int main()
 void removeUntil(Stack *s, int value)
 {
 /* add your code here */
+	while(s->ll.head != NULL && peek(s) != value){
+		pop(s);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////
